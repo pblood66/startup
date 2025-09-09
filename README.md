@@ -1,8 +1,8 @@
-# Your startup name here
+# Trivia Run
 
 [My Notes](notes.md)
 
-A brief description of the application here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Trivia Run is a basic trivia game app that will allow players to play games of trivia. It will implement basic score keeping and able to display high scores. Players will be able to compete and compare their level of knowledge in niche areas of information. 
 
 
 > [!NOTE]
@@ -26,13 +26,13 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Trivia Run is a fast-paced game that combines the excitement of game shows like Jeopardy with the accessibility of mobile play. Unlike traditional trivia apps, it focuses on niche knowledge and real-time competition, letting you challenge friends and family to prove who’s the true expert. Whether it’s sports, movies, or history, Trivia Run turns your knowledge into a fun, competitive experience you can play anytime, anywhere.
 
 ### Design
+| ![](images\TriviaMainScreen.jpg)  |  ![Design Game Play](images\TriviaInGame.jpg) |![Design Game Over](images\TriviaGameOver.jpg) | 
+|---|---| --- |
 
-![Design image](placeholder.png)
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Trivia Run will be simple in design to make it accessible to most users. It will include a main menu, where users can input their name and level of difficulty. The game play screen will have challenging and fun trivia questions for the player while also displaying their score in the upper right hand corner. When the player misses a question they will be brought to a game over screen where they can view the current high scores of other players. 
 
 ```mermaid
 sequenceDiagram
@@ -43,20 +43,26 @@ sequenceDiagram
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Ability to select difficulty of trivia questions
+- Display questions and choices
+- Keep track of the players current score as well as the top players and their scores. 
+- Scores are stored persistently in a database.
+- Players will be able to share their scores with others 
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - Uses HTML structure for the application. It will have three HTML pages. A Main Screen, a screen for gameplay, and a gameover screen that includes a high score table.
+- **CSS** - The applicaation will be able to be displayed on a variety of different screen sizes. It will utilize color to differentiate answer choices and make the application pop.
+- **React** - Provides input for the players name, buttons for the answers to trivia questions, and displays other players' scores. React will be used to for routing and components.
+- **Service** - Backend Service with endpoints for:
+  * login, logout, and register users
+  * Retrieving Players' high scores
+  * Submitting answers
+  * Display trivia questions and answers using the https://opentdb.com/api.php?amount=1 service
+- **DB/Login** - Store authnetication information, users, and high scores in database.
+- **WebSocket** - When a player finishes their game, other players are notified of their score.   
 
 ## 🚀 AWS deliverable
 
