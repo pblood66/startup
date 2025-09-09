@@ -29,17 +29,11 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 Trivia Run is a fast-paced game that combines the excitement of game shows like Jeopardy with the accessibility of mobile play. Unlike traditional trivia apps, it focuses on niche knowledge and real-time competition, letting you challenge friends and family to prove who’s the true expert. Whether it’s sports, movies, or history, Trivia Run turns your knowledge into a fun, competitive experience you can play anytime, anywhere.
 
 ### Design
-| ![](images\TriviaMainScreen.jpg)  |  ![Design Game Play](images\TriviaInGame.jpg) |![Design Game Over](images\TriviaGameOver.jpg) | 
+| ![](/images/TriviaMainScreen.jpg)  |  ![Design Game Play](/images/TriviaInGame.jpg) |![Design Game Over](/images/TriviaGameOver.jpg) | 
 |---|---| --- |
 
 Trivia Run will be simple in design to make it accessible to most users. It will include a main menu, where users can input their name and level of difficulty. The game play screen will have challenging and fun trivia questions for the player while also displaying their score in the upper right hand corner. When the player misses a question they will be brought to a game over screen where they can view the current high scores of other players. 
 
-```mermaid
-sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
-```
 
 ### Key features
 
