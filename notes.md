@@ -10,8 +10,36 @@
 
 ## AWS
 
-My IP address is: 54.81.96.130
-Launching my AMI I initially put it on a private subnet. Even though it had a public IP address and the security group was right, I wasn't able to connect to it.
+### AWS EC2
+My public IP address is: **44.206.78.208**
+
+Currently if I want to access my webserver I can find it at: [http://44.206.78.208/](http://44.206.78.208/)
+
+If I want to ssh into my server I can use this command
+
+```console
+ssh -i [key pair file] ubuntu@[ip address]
+```
+
+To restrict permission on your key pair file so that they are not accessible to all users, run the chmod console command
+```console 
+chmod 600 yourkeypairfile.pem
+```
+
+
+Allocated an elastic IP address so that my server will have the same public IP address even if I stop my server. An elastic IP address will not change again until yourelease the elastic IP address. 
+
+An elastic IP address is allocated until you release it, not until you terminate the instance. Make sure to release the elastic IP address when it is no loner needed other wise you will receive more charges. 
+
+### When to Upgrade Your Server?
+I am using a t3.nano instance. It should be enough memory and CPU to meet course requirements however if things are running slowly consider changing the instance size. 
+
+
+### Route53
+Domain Name: [https://triviarun.click](https://triviarun.click)
+
+Route53 is the AWS service that handles all DNS related items. DNS automatically creates records `NS` and `SOA` records. `NS` records stands for name server and gives you authorization to place records in the DNS server. `SOA` records stands for start of authority and provides the contact information of the owner of the domain name.
+
 
 ## Caddy
 
