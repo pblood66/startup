@@ -38,7 +38,7 @@ I am using a t3.nano instance. It should be enough memory and CPU to meet course
 ### Route53
 Domain Name: [https://triviarun.click](https://triviarun.click)
 
-Route53 is the AWS service that handles all DNS related items. DNS automatically creates records `NS` and `SOA` records. `NS` records stands for name server and gives you authorization to place records in the DNS server. `SOA` records stands for start of authority and provides the contact information of the owner of the domain name.
+Route53 is the AWS service that handles all DNS related items. DNS automatically creates records `NS` and `SOA` records. `NS` records stands for name server and gives you authorization to place records in the DNS server. `SOA` records stands for start of authority and provides the contact information of the owner of the domain name.ht
 
 
 ## Caddy
