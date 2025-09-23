@@ -5,7 +5,6 @@
 Trivia Run is a basic trivia game app that will allow players to play games of trivia. It will implement basic score keeping and able to display high scores. Players will be able to compete and compare their level of knowledge in niche areas of information. 
 
 ## 🚀 Specification Deliverable
-
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [x] Proper use of Markdown
