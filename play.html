@@ -6,37 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Playing Trivia</title>
     <link rel="icon" href="favicon.ico" />
-
-    <style>
-        table {
-            border-collapse: collapse;
-            table-layout: auto;
-            width: 100%; 
-            margin: 20px 0;
-        }
-        td {
-            padding: 6px;
-        }
-        .label-btn{
-            width: 30px; 
-            text-align: center;
-            font-weight: bold;
-        }
-        .answer-btn {
-            text-align: left;
-        }
-        button {
-            padding: 5px;
-            border: 1px solid #333;
-            border-radius: 6px;
-            background: #f0f0f0;
-            cursor: pointer;
-            width: 100%;
-        }
-        button:hover {
-            background: #ddd;
-        }
-  </style>
   </head>
 
   <body>
@@ -57,22 +26,42 @@
 
     <body>
         <main>
+            <div>
+                Player: 
+                <span class="player-name">generic_user</span>
+            </div>
+
+            <div class="score">
+                <label for="score-count">Score:</label>
+                <input type="text" id="score-count" value="--" readonly />
+            </div>
+
+            <!-- Websocket Notifications -->
+             <ul class="notifications">
+                <li class="player-name">Bobby started a new game</li>
+                <li class="player-name">Billy got a score of 4</li>
+                <li class="player-name">Joe started a new game</li>
+             </ul>
+            
+            <div class="trivia-question">
+                <h2>What is the capital of France?</h2>    
+            </div>
             <table>
                 <tr>
-                    <td class="label-btn">A</td>
-                    <td><button class="answer-btn">Answer for A goes here</button></td>
+                    <td>A</td>
+                    <td><button>Answer for A goes here</button></td>
                 </tr>
                 <tr>
-                    <td class="label-btn">B</td>
-                    <td><button class="answer-btn">Answer for B goes here</button></td>
+                    <td>B</td>
+                    <td><button>Answer for B goes here</button></td>
                 </tr>
                 <tr>
-                    <td class="label-btn">C</td>
-                    <td><button class="answer-btn">Answer for C goes here</button></td>
+                    <td>C</td>
+                    <td><button>Answer for C goes here</button></td>
                 </tr>
                     <tr>
-                    <td class="label-btn">D</td>
-                    <td><button class="answer-btn">Answer for D goes here</button></td>
+                    <td>D</td>
+                    <td><button>Answer for D goes here</button></td>
                 </tr>
             </table>
         </main>
