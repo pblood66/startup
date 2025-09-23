@@ -52,21 +52,21 @@ I am going to use the required technologies in the following ways.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
+- [x] **Server deployed and accessible with custom domain name** - [My server link](https://triviarun.click).
 
 ## 🚀 HTML deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - I have 4 HTML pages. A Login/Register Home page (`index.html`), gameplay page (`play.html`), a gameover screen (`game-over.html`), and a high scores page (`scores.html`).
+- [x] **Proper HTML element usage** - I spent time learning the various HTML elements by going through past assignments and utilizing codepen. I used header, footer, main, nav, img, a, input, form, button, etc...
+- [x] **Links** - I used links as a way to navigate between pages. At the top of each page, there is a nav bar that the user can use.
+- [x] **Text** - I have text in my about page
+- [x] **3rd party API placeholder** - My deliverable put a placeholder for the questions and answers that it will eventual pull from the opentdb API.
+- [x] **Images** - I included an icon to the header on all the pages. I also added an image to the game over screen.
+- [x] **Login placeholder** - Added a basic placeholder for login on the home page. 
+- [x] **DB data placeholder** - Player High Scores are displayed on a table in `scores.html` and `game-over.html`
+- [x] **WebSocket placeholder** - `play.html` has a placeholder for websockets to display notifications to the user as text. 
 
 ## 🚀 CSS deliverable
 
