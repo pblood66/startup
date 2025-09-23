@@ -31,7 +31,7 @@
             </div>
 
             <div class="score">
-                <label for="score-count">Score:</label>
+                <label for="score-count">IQ:</label>
                 <input type="text" id="score-count" value="--" readonly />
             </div>
 
@@ -45,24 +45,19 @@
             <div class="trivia-question">
                 <h2>What is the capital of France?</h2>    
             </div>
-            <table>
-                <tr>
-                    <td>A</td>
-                    <td><button>Answer for A goes here</button></td>
-                </tr>
-                <tr>
-                    <td>B</td>
-                    <td><button>Answer for B goes here</button></td>
-                </tr>
-                <tr>
-                    <td>C</td>
-                    <td><button>Answer for C goes here</button></td>
-                </tr>
-                    <tr>
-                    <td>D</td>
-                    <td><button>Answer for D goes here</button></td>
-                </tr>
-            </table>
+            <form method="get" action="game-over.html">
+                <label for="A">A</label>
+                <button type="submit" id="A">Answer for A goes here</button>
+                <br />
+                <label for="B">B</label>
+                <button type="submit" id="B">Answer for B goes here</button>
+                <br />
+                <label for="C">C</label>
+                <button type="submit" id="C">Answer for C goes here</button>
+                <br />
+                <label for="D">D</label>
+                <button type="submit" id="D">Answer for D goes here</button>
+            </form>
         </main>
         
         <footer>
