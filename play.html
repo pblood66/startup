@@ -4,8 +4,39 @@
     <meta charset="UTF-8" />
     <!-- Tell browsers not to scale the viewport automatically -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trivia Run</title>
+    <title>Playing Trivia</title>
     <link rel="icon" href="favicon.ico" />
+
+    <style>
+        table {
+            border-collapse: collapse;
+            table-layout: auto;
+            width: 100%; 
+            margin: 20px 0;
+        }
+        td {
+            padding: 6px;
+        }
+        .label-btn{
+            width: 30px; 
+            text-align: center;
+            font-weight: bold;
+        }
+        .answer-btn {
+            text-align: left;
+        }
+        button {
+            padding: 5px;
+            border: 1px solid #333;
+            border-radius: 6px;
+            background: #f0f0f0;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background: #ddd;
+        }
+  </style>
   </head>
 
   <body>
@@ -25,6 +56,27 @@
     <hr />
 
     <body>
+        <main>
+            <table>
+                <tr>
+                    <td class="label-btn">A</td>
+                    <td><button class="answer-btn">Answer for A goes here</button></td>
+                </tr>
+                <tr>
+                    <td class="label-btn">B</td>
+                    <td><button class="answer-btn">Answer for B goes here</button></td>
+                </tr>
+                <tr>
+                    <td class="label-btn">C</td>
+                    <td><button class="answer-btn">Answer for C goes here</button></td>
+                </tr>
+                    <tr>
+                    <td class="label-btn">D</td>
+                    <td><button class="answer-btn">Answer for D goes here</button></td>
+                </tr>
+            </table>
+        </main>
+        
         <footer>
         <hr />
         <span class="text-reset">Author Name: Patrick Blood</span>
@@ -33,4 +85,4 @@
         <a href="https://github.com/pblood66/startup">GitHub</a>
     </footer>
     </body>
-</html>"
+</html>
