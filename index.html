@@ -13,13 +13,36 @@
         <h1>Trivia Run</h1>
 
         <nav>
-            <menu>
+            <ul>
+                
                 <li><a href="index.html">Home</a></li>
                 <li><a href="play.html">Play</a></li>
                 <li><a href="scores.html">High Scores</a></li>
-            </menu>
+            </ul>
         </nav>
     </header>
+    
+    <hr />
+
+    <main>
+        <h1>Sign In/Register</h1>    
+
+        <form method="get" action="play.html">
+
+            <input type="text" id="username" name="username" placeholder="username"><br><br>
+            <input type="text" id="password" name="password" placeholder="password"><br><br>
+
+
+            <!-- For the CSS part I want to stack these buttons vertically instead of horizontal -->
+            <div class="login-group"">
+                <button type="submit">Login</button>
+                <button type="submit">Register</button>
+                <button type="reset">Clear</button>
+            </div>
+
+        </form>
+
+    </main>
 
     <footer>
         <hr />
