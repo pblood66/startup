@@ -1,0 +1,74 @@
+.scores {
+  max-width: 5000px;
+  margin: 1.5rem auto;
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+}
+
+.scores h2 {
+  margin: 0 0 0.75rem 0;
+  font-size: 2rem;
+  color: #0f172a;
+}
+
+
+.scores table {
+  width: 100%;
+  font-size: 1.05rem;
+  border-collapse: collapse;
+  font-family: inherit;
+  table-layout: auto;
+}
+
+.scores tbody tr {
+  transition: background-color 0.12s ease, transform 0.08s ease;
+}
+
+.scores tbody tr:nth-child(even) {
+  background: rgba(15, 23, 42, 0.03);
+}
+
+.scores tbody tr:hover {
+  background: rgba(99,102,241,0.06);
+}
+
+scores td {
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  vertical-align: middle;
+}
+
+/* player name / rank */
+.scores td.player-name {
+  font-weight: 600;
+  color: #0b1726;
+  width: 70%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* score column */
+.scores td.score {
+  text-align: right;
+  font-weight: 700;
+  color: #0b5cff;
+  width: 30%;
+  white-space: nowrap;
+}
+
+/* compact on small screens */
+@media (max-width: 520px) {
+  .scores {
+    padding: 0.6rem;
+    margin: 0.8rem;
+  }
+  .scores td {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.95rem;
+  }
+  .scores td.player-name { width: 65%; }
+  .scores td.score { width: 35%; }
+}
