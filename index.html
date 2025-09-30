@@ -18,15 +18,14 @@
   </head>
 
   <body>
-    <header>
+    <header class="container-fluid">
         <div class="brand">
             <h1>Trivia Run</h1>
             <img src="./images/logo.jpg" width="80px">
         </div>
         
-        <nav>
+        <nav >
             <ul>
-                
                 <li class="menu-item"><a class="nav-link" href="index.html">Home</a></li>
                 <li class="menu-item"><a class="nav-link" href="play.html">Play</a></li>
                 <li class="menu-item"><a class="nav-link" href="scores.html">High Scores</a></li>
@@ -35,16 +34,11 @@
             </ul>
         </nav>
     </header>
-    
-    <hr />
 
-    <main>
-
+    <main class="container-fluid text-center">
         <div>
             <h1>Sign In/Register</h1>    
-    
             <form method="get" action="play.html">
-                
                 <div>
                     <input class="form-control" type="text" placeholder="username">
                     <input class="form-control" type="text" placeholder="password">
@@ -54,17 +48,15 @@
                     <button type="submit" class="btn btn-secondary">Register</button>
                     <button type="reset" class="btn btn-outline-secondary" >Clear</button>
                 </div>
-    
             </form>
         </div>
-
     </main>
 
-    <footer>
-        <hr />
-        <span class="text-reset">Author Name: Patrick Blood</span>
-        <a href="https://github.com/pblood66/startup">GitHub</a>
-        
+    <footer>       
+        <div class="container-fluid">
+        <span class="text-reset">Patrick Blood</span>
+        <a class="text-reset" href="https://github.com/pblood66/startup">GitHub</a>
+      </div>
     </footer>
   </body>
 </html>

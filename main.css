@@ -22,12 +22,6 @@ header {
   padding: 0 1em;
 }
 
-footer {
-  flex: 0 30px;
-  height: 80px;      
-  min-height: 60px;  
-  max-height: 120px; 
-}
 
 main {
   flex: 1 calc(100vh - 110px);
@@ -44,7 +38,7 @@ main {
 }
 
 nav {
-    flex: 1;
+  flex: 1;
   display: flex;
   /*  overwrite Bootstrap so the menu does not wrap */
   flex-direction: row !important;
@@ -52,15 +46,15 @@ nav {
 }
 
 nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 1em;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1em;
 }
 
 nav .menu-item {
-    padding: 0 0.3em;
+  padding: 0 0.3em;
 }
 
 form .form-control {
@@ -68,14 +62,26 @@ form .form-control {
 }
 
 .login-group {
-    display: flex;
-    gap: 1em;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  flex: 0 30px;
+  height: 80px;      
+  min-height: 60px;  
+  max-height: 120px; 
 }
 
 footer a {
-    text-decoration: none;
-    color: inherit;
-    justify-self: right;
+  float: right;
+}
+
+.github-link {
+  position: absolute;
+  right: 1rem;
+  bottom: 0.5rem;
+  margin-top: 0;
 }
