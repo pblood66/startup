@@ -1,7 +1,16 @@
+html, body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 body {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   min-width: 375px;
+  box-sizing: border-box;
 }
 
 header {
@@ -54,6 +63,19 @@ nav .menu-item {
     padding: 0 0.3em;
 }
 
+form .form-control {
+  margin-bottom: 1em;
+}
+
+.login-group {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+}
+
 footer a {
-    float: right;
+    text-decoration: none;
+    color: inherit;
+    justify-self: right;
 }
