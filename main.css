@@ -5,14 +5,19 @@ body {
 }
 
 header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   flex: 0 80px;
+  padding: 0 1em;
 }
 
 footer {
   flex: 0 30px;
-  height: 80px;      /* Set your desired height */
-  min-height: 60px;  /* Optional: minimum height */
-  max-height: 120px; /* Optional: maximum height */
+  height: 80px;      
+  min-height: 60px;  
+  max-height: 120px; 
 }
 
 main {
@@ -26,19 +31,23 @@ main {
 .brand {
   display: flex;
   align-items: center;
-  gap: 1em; /* space between text and image */
+  gap: 1em; 
 }
 
-.brand h1 {
-  margin: 0;
-}
-
-ul {
-  flex: 1;
+nav {
+    flex: 1;
   display: flex;
   /*  overwrite Bootstrap so the menu does not wrap */
   flex-direction: row !important;
   list-style: none;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1em;
 }
 
 nav .menu-item {
