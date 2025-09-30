@@ -70,18 +70,21 @@ form .form-control {
 
 footer {
   flex: 0 30px;
-  height: 80px;      
-  min-height: 60px;  
-  max-height: 120px; 
 }
 
 footer a {
   float: right;
 }
 
-.github-link {
-  position: absolute;
-  right: 1rem;
-  bottom: 0.5rem;
-  margin-top: 0;
+
+@media (max-height: 600px) {
+  header {
+    display: none;
+  }
+  footer {
+    display: none;
+  }
+  main {
+    flex: 1 100vh;
+  }
 }

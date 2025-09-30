@@ -7,6 +7,7 @@
     <title>Trivia Run</title>
     <link rel="icon" href="./images/logo.jpg" />
     <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="play.css" />
 
     <!-- Include bootstrap CSS framework -->
     <link
@@ -36,43 +37,42 @@
         </nav>
     </header>
     
-    <hr />
-
     <body>
         <main>
-            <div>
-                Player: 
-                <span class="player-name">generic_user</span>
-            </div>
-
-            <div class="score">
-                <label for="score-count">IQ:</label>
-                <input type="text" id="score-count" value="--" readonly />
+            <div class="game-stats">
+                <div class=""player-name>
+                    Player: 
+                    <span class="player-name">generic_user</span>
+                </div>
+                <div class="score">
+                    <label for="score-count">IQ:</label>
+                    <input type="text" id="score-count" value="--" readonly />
+                </div>
             </div>
 
             <!-- Websocket Notifications -->
-             <ul class="notifications">
-                <li class="player-name">Bobby started a new game</li>
-                <li class="player-name">Billy got a score of 4</li>
-                <li class="player-name">Joe started a new game</li>
-             </ul>
+            <div class="notifications">
+                <div class="event"><span class="player-event">Bobby</span> started a game</div>    
+                <div class="event"><span class="player-event">Bobby</span> scored 27 pts</div>
+                <div class="event"><span class="player-event">Jimmy</span> started a game</div>    
+            </div>
             
             <div class="trivia-question">
                 <h2>What is the capital of France?</h2>    
+                <form method="get" action="game-over.html">
+                    <label for="A">A</label>
+                    <button type="submit" id="A">Answer for A goes here</button>
+                    <br />
+                    <label for="B">B</label>
+                    <button type="submit" id="B">Answer for B goes here</button>
+                    <br />
+                    <label for="C">C</label>
+                    <button type="submit" id="C">Answer for C goes here</button>
+                    <br />
+                    <label for="D">D</label>
+                    <button type="submit" id="D">Answer for D goes here</button>
+                </form>
             </div>
-            <form method="get" action="game-over.html">
-                <label for="A">A</label>
-                <button type="submit" id="A">Answer for A goes here</button>
-                <br />
-                <label for="B">B</label>
-                <button type="submit" id="B">Answer for B goes here</button>
-                <br />
-                <label for="C">C</label>
-                <button type="submit" id="C">Answer for C goes here</button>
-                <br />
-                <label for="D">D</label>
-                <button type="submit" id="D">Answer for D goes here</button>
-            </form>
         </main>
             
         <footer>       
