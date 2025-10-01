@@ -8,7 +8,7 @@
 }
 
 .scores h2 {
-  margin: 0 0 0.75rem 0;
+  
   font-size: 2rem;
   color: #0f172a;
 }
@@ -35,7 +35,6 @@
 }
 
 scores td {
-  padding: 0.7rem 0.9rem;
   border-bottom: 1px solid rgba(0,0,0,0.06);
   vertical-align: middle;
 }
@@ -66,7 +65,7 @@ scores td {
     margin: 0.8rem;
   }
   .scores td {
-    padding: 0.5rem 0.6rem;
+    padding: 0.1rem 0.1rem;
     font-size: 0.95rem;
   }
   .scores td.player-name { width: 65%; }

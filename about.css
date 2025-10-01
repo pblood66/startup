@@ -1,0 +1,19 @@
+.picture img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  display: block;
+  margin: 0 auto 1em auto;
+}
+
+.about-section {
+  background: #f8f9fa;
+  border: 2px solid #bee7ce;
+  border-radius: 12px;
+  padding: 2em;
+  max-width: 600px;
+  margin: 2em auto;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
