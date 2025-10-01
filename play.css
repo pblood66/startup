@@ -1,42 +1,9 @@
-.game-stats {
-    position: fixed;
-    top: 6rem; 
-    left: 1rem;
 
-
-    background: rgba(255,255,255,0.95);
-    padding: 0.5rem 0.75rem;
-    border-radius: 6px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
-}
-
-.notifications {
-    position: fixed;
-    top: 6rem;
-    right: 1rem;
-
-    width: 15vw; 
-    max-width: calc(100% - 2rem);
-    
-    background: rgba(255,255,255,0.95);
-    border: 1px solid rgba(0,0,0,0.08);
-    padding: 0.5rem;
-    border-radius: 8px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-}
-/* individual notification row */
-.notifications .event {
-    padding: 0.4rem 0.6rem;
-    margin-bottom: 0.4rem;
-    background: rgba(0,0,0,0.02);
-    border-radius: 6px;
-    font-size: 0.8rem;
-}
 
 .trivia-question {
   max-width: 800px;
   margin: 1rem auto;
-  background: #ffffff;
+  background: #bee7ce;
   border: 1px solid rgba(0,0,0,0.06);
   padding: 1rem;
   border-radius: 10px;
