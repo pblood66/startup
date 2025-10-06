@@ -45,8 +45,6 @@ export default function App() {
             </nav>
         </header>
 
-        <main>App components go here</main>
-
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/play" element={<Play />} />
