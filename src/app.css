@@ -1,5 +1,80 @@
+html, body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 .body {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   min-width: 375px;
+  box-sizing: border-box;
+}
+
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0 80px;
+  padding: 0 1em;
+
+  border-bottom: 1px solid #5f5b5b;
+}
+
+.brand {
+  display: flex;
+  align-items: center; 
+  gap: 0.5rem;         
+}
+
+.brand h1 {
+  margin: 0;           
+  font-size: 1.25rem;  
+}
+
+.brand img {
+  display: block;
+  width: 80px;
+  height: auto;
+}
+
+nav {
+  flex: 1;
+  display: flex;
+  /*  overwrite Bootstrap so the menu does not wrap */
+  flex-direction: row !important;
+  list-style: none;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1em;
+}
+
+nav .menu-item {
+  padding: 0 0.3em;
+}
+
+nav .nav-link:hover {
+  color: orange !important;
+  background-color: #f3f3f3;
+  text-decoration: underline;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+footer {
+  background: #bee7ce;
+  flex: 0 30px;
+}
+
+footer a {
+  float: right;
 }
