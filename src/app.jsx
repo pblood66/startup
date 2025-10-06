@@ -45,13 +45,15 @@ export default function App() {
             </nav>
         </header>
 
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/play" element={<Play />} />
-          <Route path="/scores" element={<Scores />} />
-          <Route path="/about" element={<About />} />
-          <Route path='*' element={<NotFound />} />
-        </Routes>
+        <main>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/play" element={<Play />} />
+            <Route path="/scores" element={<Scores />} />
+            <Route path="/about" element={<About />} />
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+        </main>
 
         <footer>       
           <div className="container-fluid">
