@@ -4,7 +4,7 @@ import './about.css'
 
 export function About() {
     return (
-    <main className="container-fluid bg-secondary text-center">
+    <main className="container-fluid text-center">
       <div class="notifications">
                 <div class="event"><span class="player-event">Bobby</span> started a game</div>    
                 <div class="event"><span class="player-event">Bobby</span> scored 27 pts</div>

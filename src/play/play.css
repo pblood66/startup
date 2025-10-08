@@ -26,7 +26,28 @@
   margin: 0;
 }
 
-/* hide the separate label text (we render the letter in the button) */
-.answers form label {
-  display: none;
+
+.answers form button,
+.answers form .btn {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  text-align: left; 
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: transform 0.08s ease, box-shadow 0.12s ease, background-color 0.12s ease;
 }
+
+
+.answers form button:hover,
+.answers form .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+}
+
+@media (max-width: 520px) {
+  .answers form button,
+  .answers form .btn {
+    font-size: 0.95rem;
+    padding: 0.6rem 0.8rem;
+  }

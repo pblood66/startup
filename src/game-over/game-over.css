@@ -1,4 +1,4 @@
-main h1 {
+.game-over h1 {
   color: red;
   font-size: 3em;
   font-weight: bold;
@@ -7,8 +7,9 @@ main h1 {
   margin-bottom: 0.5em;
 }
 
-main img {
+.game-over img {
   display: block;
   width: 120px;
   height: auto;
+  margin: 0.5rem auto; /* centers the image horizontally */
 }

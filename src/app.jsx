@@ -5,6 +5,7 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
 import { Play } from './play/play';
 import { Scores } from './scores/scores';
+import { Game_Over } from './game-over/game-over';
 import { About } from './about/about';
 
 import './app.css';
@@ -51,6 +52,7 @@ export default function App() {
             <Route path="/play" element={<Play />} />
             <Route path="/scores" element={<Scores />} />
             <Route path="/about" element={<About />} />
+            <Route path="/game-over" element={<Game_Over />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
         </main>
