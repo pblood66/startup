@@ -14,16 +14,16 @@ export function Login() {
     };
     
     return (
-     <main class="container-fluid text-center">
-        <div class="login-form">
+     <main className="container-fluid text-center">
+        <div className="login-form">
             <h1>Sign In/Register</h1>    
             <div>
-                <input class="form-control" type="text" placeholder="username" />
-                <input class="form-control" type="text" placeholder="password" />
+                <input className="form-control" type="text" placeholder="username" />
+                <input className="form-control" type="text" placeholder="password" />
             </div>
-            <div class="login-group">
-                    <Button onClick={handleLogin} variant="primary" type="submit" className="btn btn-primary">Login</Button>
-                    <Button onClick={handleLogin} variant="secondary" type="submit" className="btn btn-secondary">Register</Button>
+            <div className="login-group">
+                    <Button onClick={handleLogin} variant="primary" type="submit" classNameName="btn btn-primary">Login</Button>
+                    <Button onClick={handleLogin} variant="secondary" type="submit" classNameName="btn btn-secondary">Register</Button>
             </div>
         </div>
     </main>

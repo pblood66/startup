@@ -1,76 +1,77 @@
 import React from 'react'
 import "./game-over.css"
+import "../scores/scores.css"
 
 
 export function Game_Over() {
     return (
-    <main class="container-fluid text-center">
-        <div class="game-stats">
-            <div class=""player-name>
+    <main className="container-fluid text-center">
+        <div className="game-stats">
+            <div className=""player-name>
                 Player: 
-                <span class="player-name">generic_user</span>
+                <span className="player-name">generic_user</span>
             </div>
         </div>
 
-        <div class="notifications">
-            <div class="event"><span class="player-event">Bobby</span> started a game</div>    
-            <div class="event"><span class="player-event">Bobby</span> scored 27 pts</div>
-            <div class="event"><span class="player-event">Jimmy</span> started a game</div>    
+        <div className="notifications">
+            <div className="event"><span className="player-event">Bobby</span> started a game</div>    
+            <div className="event"><span className="player-event">Bobby</span> scored 27 pts</div>
+            <div className="event"><span className="player-event">Jimmy</span> started a game</div>    
         </div>
-        <div class="game-over">
+        <div className="game-over-title">
             <h1>Game Over</h1>
             <img src="sad-emoji.webp" width="100px" />
         </div>
-        <div class="scores">
+        <div className="scores">
           <h2>High Scores</h2>
           <table>
               <tbody>
                   <tr>
-                      <td class="player-name">1. Billy</td>
-                      <td class="score">256</td>
+                      <td className="player-name">1. Billy</td>
+                      <td className="score">256</td>
                   </tr>
                   <tr>
-                      <td class="player-name">2. Bobby</td>
-                      <td class="score">251</td>
+                      <td className="player-name">2. Bobby</td>
+                      <td className="score">251</td>
                   </tr>
                   <tr>    
-                      <td class="player-name">3. Johnny</td>
-                      <td class="score">189</td>
+                      <td className="player-name">3. Johnny</td>
+                      <td className="score">189</td>
                   </tr>
                   <tr>
-                      <td class="player-name">4. Kyle</td>
-                      <td class="score">175</td>
+                      <td className="player-name">4. Kyle</td>
+                      <td className="score">175</td>
                   </tr>
                   <tr>
-                      <td class="player-name">5. Billy</td>
-                      <td class="score">142</td>
+                      <td className="player-name">5. Billy</td>
+                      <td className="score">142</td>
                   </tr>
                   <tr>
-                      <td class="player-name">6. Bobby</td>
-                      <td class="score">121</td>
+                      <td className="player-name">6. Bobby</td>
+                      <td className="score">121</td>
                   </tr>
                   <tr>
-                      <td class="player-name">7. Tommy</td>
-                      <td class="score">90</td>
+                      <td className="player-name">7. Tommy</td>
+                      <td className="score">90</td>
                   </tr>
                   <tr>
-                      <td class="player-name">8. Johnny</td>
-                      <td class="score">54</td>
+                      <td className="player-name">8. Johnny</td>
+                      <td className="score">54</td>
                   </tr>
                   <tr>
-                      <td class="player-name">9. Sammy</td>
-                      <td class="score">33</td>
+                      <td className="player-name">9. Sammy</td>
+                      <td className="score">33</td>
                   </tr>
                   <tr>
-                      <td class="player-name">10. Tommy</td>
-                      <td class="score">17</td>
+                      <td className="player-name">10. Tommy</td>
+                      <td className="score">17</td>
                   </tr>
               </tbody>
           </table>
       </div>
-      <div class="play-again">
+      <div className="play-again">
         <form method="get" action="./play">
-          <button type="submit" class="btn btn-primary">Play Again</button>
+          <button type="submit" className="btn btn-primary">Play Again</button>
         </form>
       </div>
     </main>
