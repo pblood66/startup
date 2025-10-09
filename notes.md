@@ -11,7 +11,7 @@
 ## AWS
 
 ### AWS EC2
-My public IP address is: **44.206.78.208**
+My public IP address is: **x`**
 
 Currently if I want to access my webserver I can find it at: [http://44.206.78.208/](http://44.206.78.208/)
 
