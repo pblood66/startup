@@ -1,10 +1,30 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom'
 
 import "./play.css"
 
 
 export function Play() {
+    const [question, setQuestion] = React.useState('Loading...')
+    const [answers, setAnswers] = React.useState(['Unknown', 'Unknown', 'Unknown', 'Unknown'])
+    const [score, setScore] = React.useState(0);
+
+    const navigate = useNavigate();
+
+    React.useEffect(() => {
+        setQuestion("What is the capital of France?")
+        setAnswers(['Paris', "Rome", "Berlin", "Madrid"])
+    }, []);
+
+    const handleAnswerClick = (answer) => {
+        if (answer === 'Paris') {
+        setScore(score + 1);
+        } else {
+        navigate('/game-over');
+        }
+    };
+
     return (
     <main classNameName="container-fluid text-center">
       <div className="game-stats">
@@ -13,8 +33,8 @@ export function Play() {
                     <span className="player-name">generic_user</span>
                 </div>
                 <div className="score">
-                    <label for="score-count">IQ:</label>
-                    <input type="text" id="score-count" value="--" readonly />
+                    <label htmlFor="score-count">IQ:</label>
+                    <input type="text" id="score-count" value={score} readOnly />
                 </div>
             </div>
 
@@ -27,12 +47,17 @@ export function Play() {
             <div className="trivia-question">
                 <h2>What is the capital of France?</h2>   
                 <div className="answers">
-                    <form method="get" action="/game-over">
-                        <button type="submit" id="A" className="btn btn-primary btn-lg btn-block">Answer for A goes here</button>
-                        <button type="submit" id="B" className="btn btn-primary btn-lg btn-block">Answer for B goes here</button>
-                        <button type="submit" id="C" className="btn btn-primary btn-lg btn-block">Answer for C goes here</button>
-                        <button type="submit" id="D" className="btn btn-primary btn-lg btn-block">Answer for D goes here</button>
-                    </form>
+                    {answers.map((answer, index) => (
+                        <Button
+                        key={index}
+                        variant="primary"
+                        size="lg"
+                        className="btn-block mb-2"
+                        onClick={() => handleAnswerClick(answer)}
+                        >
+                        {answer}
+                        </Button>
+                    ))}
                 </div> 
             </div>
     </main>
