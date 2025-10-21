@@ -1,15 +1,12 @@
 import React from 'react'
 import './about.css'
-
+import { SocketNotifications } from '../play/notifications';
 
 export function About() {
     return (
     <main className="container-fluid text-center">
-      <div className="notifications">
-                <div className="event"><span className="player-event">Bobby</span> started a game</div>    
-                <div className="event"><span className="player-event">Bobby</span> scored 27 pts</div>
-                <div className="event"><span className="player-event">Jimmy</span> started a game</div>    
-        </div>
+        <SocketNotifications />
+        
         <h2>About</h2>
 
         <div className="picture">

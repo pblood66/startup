@@ -11,39 +11,37 @@
   z-index: 900;
 }
 
-/* Question header */
 .trivia-question h2 {
   margin: 0 0 0.75rem 0;
   font-size: 1.25rem;
   line-height: 1.2;
 }
 
-/* Answers box: vertical list with gaps */
-.answers form {
+.answers {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  margin: 0;
+  padding: 0.25rem;       
+  box-sizing: border-box;
 }
 
-
-.answers form button,
-.answers form .btn {
-  display: block;
+.answers .btn,
+.answers button {
   width: 100%;
+  box-sizing: border-box;
+  margin: 0;
   padding: 0.75rem 1rem;
-  text-align: left; 
+  text-align: left;
   border-radius: 8px;
-  font-size: 1rem;
   transition: transform 0.08s ease, box-shadow 0.12s ease, background-color 0.12s ease;
 }
 
-
-.answers form button:hover,
-.answers form .btn:hover {
+.answers .btn:hover,
+.answers button:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.06);
 }
+
 
 @media (max-width: 520px) {
   .answers form button,

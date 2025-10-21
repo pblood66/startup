@@ -1,11 +1,12 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom'
+import { SocketNotifications } from './notifications';
 
 import "./play.css"
 
 
-export function Play() {
+export function Play(props) {
     const [question, setQuestion] = React.useState('Loading...')
     const [answers, setAnswers] = React.useState(['Unknown', 'Unknown', 'Unknown', 'Unknown'])
     const [score, setScore] = React.useState(0);
@@ -26,7 +27,7 @@ export function Play() {
     };
 
     return (
-    <main classNameName="container-fluid text-center">
+    <main className="container-fluid text-center">
       <div className="game-stats">
                 <div className=""player-name>
                     Player: 
@@ -38,14 +39,10 @@ export function Play() {
                 </div>
             </div>
 
-            <div className="notifications">
-                <div className="event"><span className="player-event">Bobby</span> started a game</div>    
-                <div className="event"><span className="player-event">Bobby</span> scored 27 pts</div>
-                <div className="event"><span className="player-event">Jimmy</span> started a game</div>    
-            </div>
+            <SocketNotifications />
             
             <div className="trivia-question">
-                <h2>What is the capital of France?</h2>   
+                <h2>{question}</h2>   
                 <div className="answers">
                     {answers.map((answer, index) => (
                         <Button

@@ -1,7 +1,18 @@
 import React from 'react'
 import './scores.css'
 
+import { SocketNotifications } from '../play/notifications';
+
 export function Scores() {
+    const [scores, setScores] = React.useState([])
+
+    React.useEffect(() => {
+    const scoresText = localStorage.getItem('scores');
+    if (scoresText) {
+      setScores(JSON.parse(scoresText));
+    }
+  }, []);
+
     return (
     <main className="container-fluid text-center">
       <div className="game-stats">
@@ -10,11 +21,8 @@ export function Scores() {
                       <span className="player-name">generic_user</span>
                   </div>
               </div>
-              <div className="notifications">
-                  <div className="event"><span className="player-event">Bobby</span> started a game</div>    
-                  <div className="event"><span className="player-event">Bobby</span> scored 27 pts</div>
-                  <div className="event"><span className="player-event">Jimmy</span> started a game</div>    
-              </div>
+              
+              <SocketNotifications />
 
               <div className="scores">
                   <h2>High Scores</h2>
