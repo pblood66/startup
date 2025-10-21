@@ -58,34 +58,34 @@ export function Play() {
 
   return (
     <main className="container-fluid text-center">
-      <div className="game-stats">
-        <div className="player-name">
-          Player: <span className="player-name">generic_user</span>
+        <div className="game-stats">
+            <div className="player-name">
+            Player: <span className="player-name">generic_user</span>
+            </div>
+            <div className="score">
+                <label htmlFor="score-count">IQ:</label>
+                <input type="text" id="score-count" value={score} readOnly />
+            </div>
         </div>
-        <div className="score">
-          <label htmlFor="score-count">IQ:</label>
-          <input type="text" id="score-count" value={score} readOnly />
-        </div>
-      </div>
 
-      <SocketNotifications />
+        <SocketNotifications />
 
-      <div className="trivia-question">
-        <h2>{question}</h2>
-        <div className="answers">
-          {answers.map((answer, index) => (
-            <Button
-              key={index}
-              variant="primary"
-              size="lg"
-              className="btn-block mb-2"
-              onClick={() => handleAnswerClick(answer)}
-            >
-              {answer}
-            </Button>
-          ))}
+        <div className="trivia-question">
+            <h2>{question}</h2>
+            <div className="answers">
+                {answers.map((answer, index) => (
+                <Button
+                    key={index}
+                    variant="primary"
+                    size="lg"
+                    className="btn-block mb-2"
+                    onClick={() => handleAnswerClick(answer)}
+                    >
+                    {answer}
+                </Button>
+                ))}
+            </div>
         </div>
-      </div>
     </main>
   );
 }
