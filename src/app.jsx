@@ -7,10 +7,16 @@ import { Play } from './play/play';
 import { Scores } from './scores/scores';
 import { Game_Over } from './game-over/game-over';
 import { About } from './about/about';
+import { AuthState } from './login/authstate';
 
 import './app.css';
 
 export default function App() {
+  const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+  const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
+  const [authState, setAuthState] = React.useState(currentAuthState);
+  
+
   return (
     <BrowserRouter>
       <div>
@@ -27,11 +33,13 @@ export default function App() {
                         Home
                       </NavLink>
                     </li>
-                    <li className="menu-item">
-                      <NavLink to="/play" className="nav-link">
-                        Play
-                      </NavLink>
-                    </li>
+                    {authState === AuthState.Authenticated && (
+                      <li className="menu-item">
+                        <NavLink to="/play" className="nav-link">
+                          Play
+                        </NavLink>
+                      </li>
+                    )}
                     <li className="menu-item">
                       <NavLink to="/scores" className="nav-link">
                         High Scores
@@ -48,8 +56,20 @@ export default function App() {
 
         <main>
           <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/play" element={<Play />} />
+            <Route path="/" element={<Login 
+              userName ={userName}
+              authState={authState}
+              onAuthChange={(userName, authState) => {
+                setAuthState(authState);
+                setUserName(userName);
+              }}
+              exact
+              />} 
+            />
+            <Route path="/play" element={<Play 
+              userName={userName}
+              />}
+            />
             <Route path="/scores" element={<Scores />} />
             <Route path="/about" element={<About />} />
             <Route path="/game-over" element={<Game_Over />} />

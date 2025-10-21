@@ -4,12 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { SocketNotifications } from './notifications';
 import "./play.css";
 
-export function Play() {
+export function Play(props) {
   const [question, setQuestion] = React.useState('Loading...');
   const [answers, setAnswers] = React.useState(['Unknown', 'Unknown', 'Unknown', 'Unknown']);
   const [score, setScore] = React.useState(0);
 
-  const username = "generic"
+  const userName = props.userName
 
   const navigate = useNavigate();
 
@@ -43,7 +43,7 @@ export function Play() {
   function saveHighScore() {
     const currentScores = JSON.parse(localStorage.getItem('scores') || '[]');
     const newScore = {
-      name: username,
+      name: userName,
       score: score,
     };
 
@@ -60,7 +60,7 @@ export function Play() {
     <main className="container-fluid text-center">
         <div className="game-stats">
             <div className="player-name">
-            Player: <span className="player-name">generic_user</span>
+            Player: <span className="player-name">{userName}</span>
             </div>
             <div className="score">
                 <label htmlFor="score-count">IQ:</label>
