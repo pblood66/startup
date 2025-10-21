@@ -4,12 +4,30 @@ import Button from 'react-bootstrap/Button';
 
 import "./login.css"
 
-export function Login() {
+export function Login(props) {
     const navigate = useNavigate();
+
+    const [userName, setUserName] = React.useState(props.userName);
+    const [password, setPassword] = React.useState('');
+
+    const test = "hello world";
+
+    async function loginUser() {
+        localStorage.setItem('userName', userName);
+        props.onLogin(userName);
+        navigate("/play");
+    }
+
+    async function registerUser() {
+        localStorage.setItem('userName', userName);
+        props.onLogin(userName);
+        navigate("/play");
+    }
 
     const handleLogin = (e) => {
         e.preventDefault(); // prevent page reload
         // you can add login validation here later
+        loginUser()
         navigate("/play");
     };
     
@@ -18,12 +36,12 @@ export function Login() {
         <div className="login-form">
             <h1>Sign In/Register</h1>    
             <div>
-                <input className="form-control" type="text" placeholder="username" />
-                <input className="form-control" type="text" placeholder="password" />
+                <input className="form-control" type="text" onChange={(e) => setUserName(e.target.value)} placeholder="username" />
+                <input className="form-control" type="text" onChange={(e) => setPassword(e.target.value)} placeholder="password" />
             </div>
             <div className="login-group">
-                    <Button onClick={handleLogin} variant="primary" type="submit" classNameName="btn btn-primary">Login</Button>
-                    <Button onClick={handleLogin} variant="secondary" type="submit" classNameName="btn btn-secondary">Register</Button>
+                    <Button onClick={() => loginUser()} variant="primary" type="submit" classNameName="btn btn-primary">Login</Button>
+                    <Button onClick={() => registerUser()} variant="secondary" type="submit" classNameName="btn btn-secondary">Register</Button>
             </div>
         </div>
     </main>
