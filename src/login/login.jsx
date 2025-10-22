@@ -15,13 +15,11 @@ export function Login(props) {
     async function loginUser() {
         localStorage.setItem('userName', userName);
         props.onLogin(userName);
-        navigate("/play");
     }
 
     async function registerUser() {
         localStorage.setItem('userName', userName);
         props.onLogin(userName);
-        navigate("/play");
     }
 
     const handleLogin = (e) => {
@@ -40,8 +38,8 @@ export function Login(props) {
                 <input className="form-control" type="text" onChange={(e) => setPassword(e.target.value)} placeholder="password" />
             </div>
             <div className="login-group">
-                    <Button onClick={() => loginUser()} variant="primary" type="submit" classNameName="btn btn-primary">Login</Button>
-                    <Button onClick={() => registerUser()} variant="secondary" type="submit" classNameName="btn btn-secondary">Register</Button>
+                    <Button onClick={() => loginUser()} variant="primary" type="submit" disabled={!userName || !password}>Login</Button>
+                    <Button onClick={() => registerUser()} variant="secondary" type="submit" disabled={!userName || !password}>Register</Button>
             </div>
         </div>
     </main>
