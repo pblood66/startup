@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 
-import { Login } from './login/login';
+import { Home } from './login/home';
 import { Play } from './play/play';
 import { Scores } from './scores/scores';
 import { Game_Over } from './game-over/game-over';
@@ -56,7 +56,7 @@ export default function App() {
 
         <main>
           <Routes>
-            <Route path="/" element={<Login 
+            <Route path="/" element={<Home
               userName ={userName}
               authState={authState}
               onAuthChange={(userName, authState) => {
