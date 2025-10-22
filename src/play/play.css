@@ -25,8 +25,7 @@
   box-sizing: border-box;
 }
 
-.answers .btn,
-.answers button {
+.answers .btn {
   width: 100%;
   box-sizing: border-box;
   margin: 0;
@@ -36,8 +35,7 @@
   transition: transform 0.08s ease, box-shadow 0.12s ease, background-color 0.12s ease;
 }
 
-.answers .btn:hover,
-.answers button:hover {
+.answers .btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.06);
 }
