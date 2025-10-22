@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
-// import './authenticated css'
+import './authenticated.css';
 
 export function Authenticated(props) {
     const navigate = useNavigate();
