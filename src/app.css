@@ -13,7 +13,6 @@ html, body {
   box-sizing: border-box;
 }
 
-
 header {
   display: flex;
   flex-direction: row;
@@ -24,8 +23,6 @@ header {
 
   border-bottom: 1px solid #5f5b5b;
 }
-
-
 
 .brand {
   display: flex;
