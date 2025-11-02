@@ -7,21 +7,45 @@ import "./play.css";
 export function Play(props) {
   const [question, setQuestion] = React.useState('Loading...');
   const [answers, setAnswers] = React.useState(['Unknown', 'Unknown', 'Unknown', 'Unknown']);
+  const [correct, setCorrect] = React.useState('');
   const [score, setScore] = React.useState(0);
 
   const userName = props.userName
 
   const navigate = useNavigate();
 
-  // Load score from localStorage when the component mounts
-  React.useEffect(() => {
-    const savedScore = localStorage.getItem('playerScore');
-    if (savedScore !== null) {
-      setScore(parseInt(savedScore, 10));
-    }
+  const decodeHTML = (str) => {
+    const txt = document.createElement("textarea");
+    txt.innerHTML = str;
+    return txt.value;
+  };
 
-    setQuestion("What is the capital of France?");
-    setAnswers(['Paris', "Rome", "Berlin", "Madrid"]);
+ const fetchQuestion = () => {
+    fetch("https://opentdb.com/api.php?amount=1&type=multiple")
+      .then((response) => response.json())
+      .then((data) => {
+        const result = data.results[0];
+        console.log(result);
+
+        const question = decodeHTML(result.question);
+        const correct = decodeHTML(result.correct_answer);
+        const incorrect = result.incorrect_answers.map(decodeHTML);
+
+        const shuffledAnswers = [...incorrect, correct].sort(() => Math.random() - 0.5);
+
+        setQuestion(question);
+        setAnswers(shuffledAnswers);
+        setCorrect(correct);
+      })
+      .catch((err) => {
+        console.error("Error fetching question:", err);
+        setQuestion("Failed to load question.");
+        setAnswers([]);
+      });
+  };
+
+  React.useEffect(() => {
+    fetchQuestion();
   }, []);
 
   // Save score to localStorage whenever it changes
@@ -30,8 +54,9 @@ export function Play(props) {
   }, [score]);
 
   const handleAnswerClick = (answer) => {
-    if (answer === 'Paris') {
+    if (answer === correct) {
       setScore((prev) => prev + 1);
+      fetchQuestion();
     } else {
         saveHighScore();
         navigate('/game-over');
