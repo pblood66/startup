@@ -15,21 +15,43 @@ let apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 apiRouter.post('/auth/create', async (req, res) => {
+  if (await findUser('email', req.body.email)) {
+    res.status(409).send({ msg: 'User is already registered with this email' });
+    return; 
+  }
 
-  const user = await createServerModuleRunner(req.body.email, req.body.password);
+  const user = await createUser(req.body.username, req.body.password);
+
+  setAuthCookie(res, user.authToken);
+  res.send({ username: user.username })
 });
 
-async function createUser(email, password) {
+async function createUser(username, password) {
   const hash = await bcrypt.hash(password, 16);
 
   const user = {
-    email: email,
+    username: username,
     password: hash,
     authToken: uuid.v4(), 
   };
 
   users.push(user);
   return user;
+}
+
+async function findUser(field, value) {
+  if (!value) return null;
+
+  return users.find((u) => u[field] === value);
+}
+
+function setAuthCookie(res, authToken) {
+  res.cookie(authCookieName, authToken, {
+    maxAge: 1000 * 60 * 60 * 24 * 365,
+    secure: true,
+    httpOnly: true,
+    sameSite: 'strict',
+  });
 }
 
 
