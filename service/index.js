@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
 
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
+const authCookieName = 'token';
 
 let users = [];
 let scores = [];
@@ -37,6 +38,17 @@ apiRouter.post('/auth/login', async (req, res) => {
     }
   }
   res.status(401).send({ msg: 'Unathorized' });
+});
+
+apiRouter.delete('auth/logout', async (req, res) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
+  if (user) {
+    delete user.token;
+  }
+
+  // delete cookie and send a 204 status
+  res.clearCookie(authCookieName);
+  res.status(204).end()
 });
 
 
