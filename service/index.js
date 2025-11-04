@@ -6,6 +6,8 @@ const uuid = require('uuid');
 
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
 const authCookieName = 'token';
+const {performance} = require('perf_hooks');
+const { start } = require('repl');
 
 let users = [];
 let scores = [];
@@ -18,6 +20,7 @@ const apiRouter = express.Router();
 app.use('/api', apiRouter);
 
 apiRouter.post('/auth/create', async (req, res) => {
+  const startTime = performance.now()
   if (await findUser('username', req.body.username)) {
     res.status(409).send({ msg: 'User is already registered' });
     return;
@@ -26,6 +29,8 @@ apiRouter.post('/auth/create', async (req, res) => {
   const user = await createUser(req.body.username, req.body.password);
   setAuthCookie(res, user.authToken);
   res.send({ username: user.username });
+  const endTime = performance.now();
+  console.log(`runtime: ${endTime - startTime} ms`)
 });
 
 apiRouter.post('/auth/login', async (req, res) => {
@@ -62,7 +67,7 @@ apiRouter.get('/scores', (_req, res) => {
   res.send(scores);
 });
 
-apiRouter.post('/score', (req, res) => {
+apiRouter.post('/score', verifyAuth, (req, res) => {
   scores = updateScores(req.body);
   res.send(scores);
 });
@@ -89,7 +94,7 @@ function updateScores(newScore) {
 }
 
 async function createUser(username, password) {
-  const hash = await bcrypt.hash(password, 16);
+  const hash = await bcrypt.hash(password, 10);
   const user = {
     username,
     password: hash,
