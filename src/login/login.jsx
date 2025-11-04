@@ -2,6 +2,7 @@ import React from 'react'
 import {useNavigate} from "react-router-dom"
 import Button from 'react-bootstrap/Button';
 
+import { MessageDialog } from './messageDialog';
 import "./login.css"
 
 export function Login(props) {
@@ -9,17 +10,33 @@ export function Login(props) {
 
     const [userName, setUserName] = React.useState(props.userName);
     const [password, setPassword] = React.useState('');
+    const [displayError, setDisplayError] = React.useState(null);
 
     const test = "hello world";
 
     async function loginUser() {
-        localStorage.setItem('userName', userName);
-        props.onLogin(userName);
+        loginOrCreate(`/api/auth/login`);
     }
 
-    async function registerUser() {
-        localStorage.setItem('userName', userName);
-        props.onLogin(userName);
+  async function registerUser() {
+        loginOrCreate(`/api/auth/create`);
+    }
+
+    async function loginOrCreate(endpoint) {
+        const response = await fetch(endpoint, {
+        method: 'post',
+        body: JSON.stringify({ username: userName, password: password }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+        });
+        if (response?.status === 200) {
+            localStorage.setItem('userName', userName);
+            props.onLogin(userName);
+        } else {
+        const body = await response.json();
+        setDisplayError(`⚠ Error: ${body.msg}`);
+        }
     }
 
     const handleLogin = (e) => {
@@ -42,6 +59,7 @@ export function Login(props) {
                     <Button onClick={() => registerUser()} variant="secondary" type="submit" disabled={!userName || !password}>Register</Button>
             </div>
         </div>
+        <MessageDialog message={displayError} onHide={() => setDisplayError(null)} />
     </main>
     );
 }
