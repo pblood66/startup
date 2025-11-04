@@ -6,13 +6,11 @@ import "./play.css";
 import { GameNotifier } from './gameNotifier';
 
 export function Play(props) {
-  const [question, setQuestion] = React.useState('Loading...');
-  const [answers, setAnswers] = React.useState(['Unknown', 'Unknown', 'Unknown', 'Unknown']);
-  const [correct, setCorrect] = React.useState('');
+  const [questions, setQuestions] = React.useState([]);
+  const [currentIndex, setCurrentIndex] = React.useState(0);
   const [score, setScore] = React.useState(0);
 
-  const userName = props.userName
-
+  const userName = props.userName;
   const navigate = useNavigate();
 
   const decodeHTML = (str) => {
@@ -21,96 +19,101 @@ export function Play(props) {
     return txt.value;
   };
 
- const fetchQuestion = () => {
-    fetch("https://opentdb.com/api.php?amount=1&type=multiple")
-      .then((response) => response.json())
-      .then((data) => {
-        const result = data.results[0];
-        console.log(result);
-
-        const question = decodeHTML(result.question);
-        const correct = decodeHTML(result.correct_answer);
-        const incorrect = result.incorrect_answers.map(decodeHTML);
-
+  const fetchQuestionsBatch = React.useCallback(async () => {
+    try {
+      const response = await fetch("https://opentdb.com/api.php?amount=10&type=multiple");
+      const data = await response.json();
+      const processed = data.results.map((q) => {
+        const correct = decodeHTML(q.correct_answer);
+        const incorrect = q.incorrect_answers.map(decodeHTML);
         const shuffledAnswers = [...incorrect, correct].sort(() => Math.random() - 0.5);
 
-        setQuestion(question);
-        setAnswers(shuffledAnswers);
-        setCorrect(correct);
-      })
-      .catch((err) => {
-        console.error("Error fetching question:", err);
-        setQuestion("Failed to load question.");
-        setAnswers([]);
+        return {
+          question: decodeHTML(q.question),
+          correct,
+          answers: shuffledAnswers,
+        };
       });
-  };
-
-  React.useEffect(() => {
-    fetchQuestion();
+      setQuestions(processed);
+      setCurrentIndex(0);
+    } catch (err) {
+      console.error("Error fetching questions:", err);
+      setQuestions([{ question: "Failed to load questions.", answers: [], correct: "" }]);
+    }
   }, []);
 
-  // Save score to localStorage whenever it changes
   React.useEffect(() => {
-    localStorage.setItem('playerScore', score.toString());
-  }, [score]);
+    fetchQuestionsBatch();
+  }, [fetchQuestionsBatch]);
 
   const handleAnswerClick = (answer) => {
-    if (answer === correct) {
+    const current = questions[currentIndex];
+    if (!current) return;
+
+    if (answer === current.correct) {
       setScore((prev) => prev + 1);
-      fetchQuestion();
+
+      const nextIndex = currentIndex + 1;
+
+      if (nextIndex < questions.length) {
+        setCurrentIndex(nextIndex);
+      } else {
+        fetchQuestionsBatch();
+      }
     } else {
-        saveHighScore();
-        navigate('/game-over');
-        setScore(0);
+      saveHighScore();
+      navigate('/game-over');
+      setScore(0);
     }
   };
 
-  
   async function saveHighScore() {
-    const newScore = {
-      name: userName,
-      score: score,
-    };
-
+    const newScore = { name: userName, score };
     await fetch('/api/score', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(newScore),
+      credentials: 'include',
     });
-
-    // GameNotifier.broadcastEvent(userName, gameEvent.End, newScore);
   }
+
+  const current = questions[currentIndex] || {};
+  const { question, answers } = current;
 
   return (
     <main className="container-fluid text-center">
-        <div className="game-stats">
-            <div className="player-name">
-            Player: <span className="player-name">{userName}</span>
-            </div>
-            <div className="score">
-                <label htmlFor="score-count">IQ:</label>
-                <input type="text" id="score-count" value={score} readOnly />
-            </div>
+      <div className="game-stats">
+        <div className="player-name">
+          Player: <span className="player-name">{userName}</span>
         </div>
-
-        <SocketNotifications />
-
-        <div className="trivia-question">
-            <h2>{question}</h2>
-            <div className="answers">
-                {answers.map((answer, index) => (
-                <Button
-                    key={index}
-                    variant="primary"
-                    size="lg"
-                    className="btn-block mb-2"
-                    onClick={() => handleAnswerClick(answer)}
-                    >
-                    {answer}
-                </Button>
-                ))}
-            </div>
+        <div className="score">
+          <label htmlFor="score-count">IQ:</label>
+          <input type="text" id="score-count" value={score} readOnly />
         </div>
+      </div>
+
+      <SocketNotifications />
+
+      <div className="trivia-question">
+        <h2>{question || "Loading..."}</h2>
+        <div className="answers">
+          {answers && answers.length > 0 ? (
+            answers.map((answer, index) => (
+              <Button
+                key={index}
+                variant="primary"
+                size="lg"
+                className="btn-block mb-2"
+                onClick={() => handleAnswerClick(answer)}
+              >
+                {answer}
+              </Button>
+            ))
+          ) : (
+            <p>Loading answers...</p>
+          )}
+        </div>
+      </div>
     </main>
   );
 }
