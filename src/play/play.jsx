@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import { SocketNotifications } from './notifications';
 import "./play.css";
+import { GameNotifier } from './gameNotifier';
 
 export function Play(props) {
   const [question, setQuestion] = React.useState('Loading...');
@@ -65,20 +66,19 @@ export function Play(props) {
   };
 
   
-  function saveHighScore() {
-    const currentScores = JSON.parse(localStorage.getItem('scores') || '[]');
+  async function saveHighScore() {
     const newScore = {
       name: userName,
       score: score,
     };
 
-    // Add new score and sort descending
-    const updatedScores = [...currentScores, newScore].sort((a, b) => b.score - a.score);
+    await fetch('/api/score', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(newScore),
+    });
 
-    // Keep only top 10
-    const topScores = updatedScores.slice(0, 10);
-
-    localStorage.setItem('scores', JSON.stringify(topScores));
+    // GameNotifier.broadcastEvent(userName, gameEvent.End, newScore);
   }
 
   return (

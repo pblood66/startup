@@ -12,6 +12,7 @@ let scores = [];
 
 app.use(express.json());
 app.use(cookieParser()); 
+app.use(express.static('public'));
 
 const apiRouter = express.Router();
 app.use('/api', apiRouter);
@@ -57,11 +58,11 @@ const verifyAuth = async (req, res, next) => {
   }
 };
 
-apiRouter.get('/scores', verifyAuth, (_req, res) => {
+apiRouter.get('/scores', (_req, res) => {
   res.send(scores);
 });
 
-apiRouter.post('/score', verifyAuth, (req, res) => {
+apiRouter.post('/score', (req, res) => {
   scores = updateScores(req.body);
   res.send(scores);
 });

@@ -8,12 +8,13 @@ export function Game_Over() {
   const [scores, setScores] = React.useState([]);
 
   React.useEffect(() => {
-    const scoresText = localStorage.getItem('scores');
-    if (scoresText) {
-      setScores(JSON.parse(scoresText));
-    }
+    fetch('/api/scores')
+      .then((response) => response.json())
+      .then((scores) => {
+        setScores(scores);
+      });
   }, []);
-
+  
   // Sort descending and limit to top 10
   const sortedScores = [...scores].sort((a, b) => b.score - a.score).slice(0, 10);
 
