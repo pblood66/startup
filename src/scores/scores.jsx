@@ -38,13 +38,6 @@ export function Scores() {
         
     return (
     <main className="container-fluid text-center">
-        <div className="game-stats">
-            <div className=""player-name>
-                Player: 
-                <span className="player-name">generic_user</span>
-            </div>
-        </div>
-              
         <SocketNotifications />   
 
         <div className="scores">

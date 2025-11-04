@@ -98,12 +98,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Supports registration, login, logout, and restricted endpoint** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - Used node js and express for the service
+- [x] **Static middleware for frontend** - Used static middleware to make sure only logged in users can post scores
+- [x] **Calls to third party endpoints** - Used opentdb to fetch trivia questions and answers
+- [x] **Backend service endpoints** - backend service endpoints for login/logout, update scores, and register users
+- [x] **Frontend calls service endpoints** - Frontend now fully supports all features that were previously mocked out
+- [x] **Supports registration, login, logout, and restricted endpoint** - supports the following endpoints
 
 
 ## 🚀 DB deliverable
