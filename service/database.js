@@ -16,3 +16,16 @@ const scoreCollection = db.collection('score');
     process.exit(1);
   }
 })();
+
+function getUser(username) {
+    return userCollection.findOne({ username: username });
+}
+
+function getUserByToken(token) {
+    return userCollection.findOne({ token: token });
+}
+
+module.exports = {
+    getUser,
+    getUserByToken,
+};
