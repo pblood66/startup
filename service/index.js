@@ -38,6 +38,7 @@ apiRouter.post('/auth/login', async (req, res) => {
   const user = await findUser('username', req.body.username);
   if (user && await bcrypt.compare(req.body.password, user.password)) {
     user.authToken = uuid.v4();
+    await DB.updateUser(user);
     setAuthCookie(res, user.authToken);
     res.send({ username: user.username });
   } else {
@@ -49,6 +50,7 @@ apiRouter.delete('/auth/logout', async (req, res) => {
   const user = await findUser('authToken', req.cookies[authCookieName]);
   if (user) {
     delete user.authToken;
+    DB.updateUser(user);
   }
 
   res.clearCookie(authCookieName);
@@ -101,7 +103,7 @@ async function createUser(username, password) {
     password: hash,
     authToken: uuid.v4(),
   };
-  users.push(user);
+  DB.addUser(user);
   return user;
 }
 

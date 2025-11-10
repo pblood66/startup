@@ -25,7 +25,17 @@ function getUserByToken(token) {
     return userCollection.findOne({ token: token });
 }
 
+async function addUser(user) {
+    await userCollection.insertOne(user);
+}
+
+async function updateUser(user) {
+    await userCollection.updateOne({ username: user.username }, {$set: user });
+}
+
 module.exports = {
     getUser,
     getUserByToken,
+    addUser,
+    updateUser,
 };
