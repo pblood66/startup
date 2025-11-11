@@ -16,11 +16,11 @@ export function Game_Over() {
   }, []);
   
   // Sort descending and limit to top 10
-  const sortedScores = [...scores].sort((a, b) => b.score - a.score).slice(0, 10);
+  //const sortedScores = [...scores].sort((a, b) => b.score - a.score).slice(0, 10);
 
   const scoreRows = [];
-  if (sortedScores.length) {
-    for (const [i, score] of sortedScores.entries()) {
+  if (scores.length) {
+    for (const [i, score] of scores.entries()) {
       scoreRows.push(
         <tr key={i}>
           <td>{i + 1}</td>

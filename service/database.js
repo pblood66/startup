@@ -22,15 +22,35 @@ function getUser(username) {
 }
 
 function getUserByToken(token) {
-    return userCollection.findOne({ token: token });
+    return userCollection.findOne({ authToken: token });
 }
 
 async function addUser(user) {
+  console.log("adding User")
     await userCollection.insertOne(user);
 }
 
 async function updateUser(user) {
-    await userCollection.updateOne({ username: user.username }, {$set: user });
+  console.log(`logging user: ${user.username}, ${user.authToken}`)  
+  await userCollection.updateOne({ username: user.username }, {$set: user });
+}
+
+async function addScore(score) {
+  console.log(`Adding Score: ${score}`)
+  return scoreCollection.insertOne(score);
+}
+
+async function getHighScores() {
+  const query = {};
+  const options = {
+    sort: { score: -1 },
+    limit: 10,
+  };
+
+  const cursor = scoreCollection.find(query, options);
+  const scores = await cursor.toArray();
+  console.log('High Scores:', scores);
+  return scores;
 }
 
 module.exports = {
@@ -38,4 +58,6 @@ module.exports = {
     getUserByToken,
     addUser,
     updateUser,
+    addScore, 
+    getHighScores
 };

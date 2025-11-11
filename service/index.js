@@ -4,14 +4,10 @@ const app = express();
 const DB = require('./database.js')
 const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
+const {performance} = require('perf_hooks');
 
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
 const authCookieName = 'token';
-const {performance} = require('perf_hooks');
-const { start } = require('repl');
-
-let users = [];
-let scores = [];
 
 app.use(express.json());
 app.use(cookieParser()); 
@@ -49,7 +45,7 @@ apiRouter.post('/auth/login', async (req, res) => {
 apiRouter.delete('/auth/logout', async (req, res) => {
   const user = await findUser('authToken', req.cookies[authCookieName]);
   if (user) {
-    delete user.authToken;
+    user.authToken = "";
     DB.updateUser(user);
   }
 
@@ -66,34 +62,20 @@ const verifyAuth = async (req, res, next) => {
   }
 };
 
-apiRouter.get('/scores', (_req, res) => {
+apiRouter.get('/scores', async (_req, res) => {
+  console.log("Test Scores")
+  const scores = await DB.getHighScores();
   res.send(scores);
 });
 
 apiRouter.post('/score', verifyAuth, (req, res) => {
-  scores = updateScores(req.body);
+  const scores = updateScores(req.body);
   res.send(scores);
 });
 
-function updateScores(newScore) {
-  let found = false;
-  for (const [i, prevScore] of scores.entries()) {
-    if (newScore.score > prevScore.score) {
-      scores.splice(i, 0, newScore);
-      found = true;
-      break;
-    }
-  }
-
-  if (!found) {
-    scores.push(newScore);
-  }
-
-  if (scores.length > 10) {
-    scores.length = 10;
-  }
-
-  return scores;
+async function updateScores(newScore) {
+  await DB.addScore(newScore);
+  return DB.getHighScores();
 }
 
 async function createUser(username, password) {
@@ -110,7 +92,7 @@ async function createUser(username, password) {
 async function findUser(field, value) {
   if (!value) return null;
 
-  if (field === 'token') {
+  if (field === 'authToken') {
     return DB.getUserByToken(value);
   }
   return DB.getUser(value);
