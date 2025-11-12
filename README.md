@@ -110,8 +110,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
+- [x] **Stores data in MongoDB** - Set up a cluster with a table named "score" to hold the high scores
+- [x] **Stores credentials in MongoDB** - Created a table named "user" to hold user credentials including, username, encrypted password, and authToken
 
 ## 🚀 WebSocket deliverable
 
