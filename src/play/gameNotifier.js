@@ -1,6 +1,7 @@
 import React from 'react';
 
 const gameEvents = {
+  System: 'system',
   End: 'gameEnd',
   Start: 'gameStart',
 };
@@ -18,14 +19,21 @@ class GameEventNotifier {
   handlers = [];
 
   constructor() {
-    setInterval(() => {
-      const score = Math.floor(Math.random() * 100);
-      const userName = 'Bobby';
-      this.broadcastEvent(userName, gameEvents.End, {
-        name: userName,
-        score: score,
-      });
-    }, 5000);
+    let port = window.location.port;
+    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+    this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
+    this.socket.onopen = (event) => {
+      this.receiveEvent(new EventMessage('Trivia Run', gameEvents.System, { msg: 'connected'}));
+    };
+    this.socket.onclose = (event) => {
+      this.receiveEvent(new EventMessage('Trivia Run', gameEvents.System, { msg: 'disconnected'}));
+    };
+    this.socket.onmessage = async (msg) => {
+      try {
+        const event = JSON.parse(await msg.data.text());
+        this.receiveEvent(event);
+      } catch {}
+    };
   }
 
   broadcastEvent(from, type, value) {
