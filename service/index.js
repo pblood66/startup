@@ -5,6 +5,7 @@ const DB = require('./database.js')
 const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
 const {performance} = require('perf_hooks');
+const { peerProxy } = require('./peerProxy.js');
 
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
 const authCookieName = 'token';
@@ -115,6 +116,8 @@ app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
 
-app.listen(port, () => {
+const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+peerProxy(httpService);
