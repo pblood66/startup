@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import { SocketNotifications } from './notifications';
 import "./play.css";
-import { GameNotifier } from './gameNotifier';
+import { gameEvents, GameNotifier } from './gameNotifier';
 
 export function Play(props) {
   const [questions, setQuestions] = React.useState([]);
@@ -36,6 +36,7 @@ export function Play(props) {
       });
       setQuestions(processed);
       setCurrentIndex(0);
+      GameNotifier.broadcastEvent(userName, gameEvents.Start, {});
     } catch (err) {
       console.error("Error fetching questions:", err);
       setQuestions([{ question: "Failed to load questions.", answers: [], correct: "" }]);
@@ -69,6 +70,8 @@ export function Play(props) {
 
   async function saveHighScore() {
     const newScore = { name: userName, score };
+    GameNotifier.broadcastEvent(userName, gameEvents.End, newScore);
+
     await fetch('/api/score', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },

@@ -6,16 +6,18 @@ export function SocketNotifications() {
   const [events, setEvents] = React.useState([]);
 
   React.useEffect(() => {
-    function handleGameEvent(evt) {
-      setEvents((prev) => {
-        const updated = [evt, ...prev];
-        return updated.slice(0, 5);
-      });
-    }
 
     GameNotifier.addHandler(handleGameEvent);
-    return () => GameNotifier.removeHandler(handleGameEvent);
-  }, []);
+
+    return () => {
+      GameNotifier.removeHandler(handleGameEvent);
+    }
+
+  });
+
+  function handleGameEvent(event) {
+    setEvents([...events, event]);
+  }
 
   function createMessageArray() {
     return events.map((evt, i) => {
