@@ -117,8 +117,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [x] **Backend listens for WebSocket connection** - Created a backend that listens for connections
+- [x] **Frontend makes WebSocket connection** - Updated my GameNotifier class to create a websocket connection
+- [x] **Data sent over WebSocket connection** - GameNotifier sends messages and data over websocket connection
+- [x] **WebSocket data displayed** - Able to receive events and display them to a log
+- [x] **Application is fully functional** - Application is fully functional
